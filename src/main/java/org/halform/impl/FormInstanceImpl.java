@@ -25,7 +25,15 @@ public class FormInstanceImpl implements FormInstance {
 
     private void addProperty(List<PropertyValue> propertyValues, Property property) {
         if (property instanceof PropertyList) {
-            throw new IllegalStateException("Not yet implemented!");
+            PropertyList propertyList = (PropertyList) property;
+            if (propertyList.isMulti()) {
+                throw new IllegalStateException("Not yet implemented!");
+            }
+            else {
+                for(Property childProperty:propertyList.getProperties()) {
+                    addProperty(propertyValues, childProperty);
+                }
+            }
         }
         else {
             propertyValues.add(new StringPropertyValueImpl(property));
