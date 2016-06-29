@@ -7,6 +7,7 @@ import org.halform.action.Action;
 import org.halform.action.GetValueAction;
 import org.halform.action.SetValueAction;
 import org.halform.value.PropertyValue;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -82,6 +83,7 @@ public class FormInstanceImplTest {
     }
 
     @Test
+    @Ignore
     public void verifyActionListPropertyListOneProperty() {
         formTemplate = new FormTemplateImpl("Form-Template", "Form template",
                 Arrays.asList(

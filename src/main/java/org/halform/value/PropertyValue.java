@@ -10,4 +10,6 @@ public interface PropertyValue {
     Property getProperty();
 
     List<Action> getActions();
+
+    PropertyValue duplicate();
 }

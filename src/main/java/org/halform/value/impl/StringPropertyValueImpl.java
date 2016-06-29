@@ -5,6 +5,7 @@ import org.halform.action.Action;
 import org.halform.action.impl.BaseAction;
 import org.halform.action.impl.GetValueActionImpl;
 import org.halform.action.impl.SetValueActionImpl;
+import org.halform.value.PropertyValue;
 import org.halform.value.StringPropertyValue;
 
 import java.util.ArrayList;
@@ -15,13 +16,12 @@ public class StringPropertyValueImpl extends BasePropertyValue implements String
 
     private String value;
 
-    private List<Action> actions;
-
-    private StringPropertyActionFactory stringPropertyActionFactory = new StringPropertyActionFactory();
+    private List<Action> actions = new ArrayList<Action>();
 
     public StringPropertyValueImpl(Property property) {
         super(property);
-        actions = stringPropertyActionFactory.create(property,this);
+        actions.add(new GetValueActionImpl(property, this));
+        actions.add(new SetValueActionImpl(property, this));
     }
 
     public void set(String value) {
@@ -34,5 +34,9 @@ public class StringPropertyValueImpl extends BasePropertyValue implements String
 
     public List<Action> getActions() {
         return Collections.unmodifiableList(actions);
+    }
+
+    public PropertyValue duplicate() {
+        return new StringPropertyValueImpl(getProperty());
     }
 }

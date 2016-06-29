@@ -18,7 +18,7 @@ public class FormInstanceImpl implements FormInstance {
 
 
     public FormInstanceImpl(FormTemplate template) {
-        for(Property property :template.getProperties()) {
+        for(Property property:template.getProperties()) {
             addProperty(propertyValues, property);
         }
     }

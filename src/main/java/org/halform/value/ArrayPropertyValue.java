@@ -1,14 +1,12 @@
 package org.halform.value;
 
+import java.util.Collections;
 import java.util.List;
 
 public interface ArrayPropertyValue extends PropertyValue {
 
 
-    List<ArrayElementPropertyValue> getElements();
+    List<ListPropertyValue> getElements();
 
-    void addElement();
-
-
-
+    void createElement();
 }
